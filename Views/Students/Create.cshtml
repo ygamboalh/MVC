@@ -1,0 +1,75 @@
+﻿@model MVC.Models.Student
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<p>This page creates a new Student</p>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+             <div class="div">
+                    <span class="input-container">
+                        <label class="label">Name</label>
+                    </span>
+                    <input asp-for="Name" autocomplete="off" class="input" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+             </div>
+             <div class="div">
+                    <span class="input-container">
+                        <label class="label">Career</label>
+                    </span>
+                    <input asp-for="Career" class="input" autocomplete="off" />
+                    <span asp-validation-for="Career" class="text-danger"></span>
+             </div>
+             <div class="div">
+                    <span class="input-container">
+                        <label class="label">Age</label>
+                    </span>
+                    <input asp-for="Age" maxlength="2" autocomplete="off" class="input" />
+                    <span asp-validation-for="Age" class="text-danger"></span>
+             </div>
+             <div class="div">
+                    <span class="input-container">
+                        <label class="label">Email</label>
+                    </span>
+                    <input asp-for="Email" id="Email" autocomplete="off" class="input" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+             </div>
+             <div class="div">
+                    <span class="input-container">
+                        <label class="label">Year</label>
+                    </span>
+                    <select asp-for="Year" class="input">
+                        <option>First</option>
+                        <option>Second</option>
+                        <option>Third</option>
+                        <option>Forth</option>
+                        <option>Fifth</option>
+                        <option>Sixth</option>
+                    </select>
+                    <span asp-validation-for="Year" class="text-danger"></span>
+             </div>
+            <div class="checkbox-container">
+                  <input type="checkbox" asp-for="Housed" id="checkbox-housed" />
+                  <label asp-for="Housed" for="checkbox-housed">@Html.DisplayNameFor(model => model.Housed)</label>
+                  <span class="checkmark"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

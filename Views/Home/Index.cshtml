@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Students";
+}
+@model IEnumerable<MVC.Models.Student>
+<h1>@ViewData["Title"]</h1>
+
+<p>This page shows a CRUD operation</p>
+  <button type="button" class="btn btn-primary" style="margin-bottom:10px">Add Student</button>
+  <br>
+
+  <table class="table table-hover table-responsive-sm">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.Career)</th>
+        <th>@Html.DisplayNameFor(model => model.Age)</th>
+        <th>@Html.DisplayNameFor(model => model.Email)</th>
+        <th>@Html.DisplayNameFor(model => model.Year)</th>
+        @*<th>@Html.DisplayNameFor(model => model.Housed)</th>
+        <th>@Html.DisplayNameFor(model => model.Registered)</th>*@
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          @*@foreach (var student in @Model)
+          {  
+            int count = 1;
+            <td>@count</td>
+            <td>@Html.DisplayFor(modelItem => student.Name)</td>
+            <td>@Html.DisplayFor(modelItem => student.Career)</td>
+            <td>@Html.DisplayFor(modelItem => student.Age)</td>
+            <td>@Html.DisplayFor(modelItem => student.Email)</td>
+            <td>@Html.DisplayFor(modelItem => student.Year)</td>
+            @*<td>@Html.DisplayFor(modelItem => student.Housed)</td>
+            <td>@Html.DisplayFor(modelItem => student.Registered)</td>
+          }*@
+      </tr>
+      <!-- Agrega más filas con datos aquí -->
+    </tbody>
+  </table>
+

@@ -1,0 +1,15 @@
+﻿table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    border: 2px solid #000;
+}
+    table tr:last-child {
+        border-bottom: none;
+    }
+th, td {
+    border: 1px thin #808080;
+    padding: 8px;
+    text-align: left;
+}
+

@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>This page add a new Student</p>
+  <button type="button" class="btn btn-primary" style="margin-bottom:10px">Go back</button>
+  <br>
+  <form asp-action="Create">
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-responsive">
+          <tbody>
+            <tr>
+              <td>
+                  <div class="row table-row">
+                      <div class="col-sm-2">
+                        <label for="nameLabel" class="">Name</label>
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="text" id="nameLabel" style="min-width:200px" class="form-control" placeholder="Enter your name"/>
+                      </div>
+                  </div>
+              </td>
+              <td>
+                  <div class="row table-row col-sm-11 col-md-11 col-lg-11" style="margin-right:10px">
+                      <div class="col-sm-2">
+                        <label for="labelCareer" class="">Career</label>
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="text" id="labelCareer" style="min-width:200px" class="form-control" placeholder="Enter your career"/>
+                      </div>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <div class="row table-row col-sm-11 col-md-11 col-lg-11" style="margin-right:10px">
+                      <div class="col-sm-2">
+                        <label for="labelAge" class="">Age</label>
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="number" id="labelAge" style="min-width:200px" class="form-control"/>
+                      </div>
+                  </div>
+              </td>
+              <td>
+                  <div class="row table-row col-sm-11 col-md-11 col-lg-11" style="margin-right:10px">
+                      <div class="col-sm-2">
+                        <label for="labelEmail" class="">Email</label>
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="email" id="labelEmail" style="min-width:200px" class="form-control" placeholder="Enter your email address"/>
+                      </div>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <div class="row table-row col-sm-11 col-md-11 col-lg-11" style="margin-right:10px">
+                      <div class="col-sm-2">
+                        <label for="labelYear" class="">Year</label>
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="number" maxlength=4 id="labelYear" style="min-width:200px" class="form-control" placeholder="Enter your year"/>
+                      </div>
+                  </div>
+              </td>
+              <td>
+                  <div class="row table-row col-sm-11 col-md-11 col-lg-13" style="align-content:space-evenly; margin-right:10px">
+                      <div class="col-sm-3">
+                        <label for="selectHoused" class="">Housed</label>
+                      </div>
+                      <div class="col-sm-8" >
+                          <select id="selectHoused" class="form-control">
+                              <option>Yes</option>
+                              <option>No</option>
+                          </select>
+                      </div>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <div class="col-sm-3">
+                      <button class="btn btn-primary">Create</button>
+                  </div>
+              </td>
+              <td>
+                  <div class="col-sm-3">
+                      <button class="btn btn-secondary">Cancel</button>
+                  </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </form>
+

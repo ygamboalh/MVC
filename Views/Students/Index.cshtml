@@ -1,0 +1,164 @@
+﻿@*@model IEnumerable<MVC.Models.Student>*@
+@model GenericPaginator<MVC.Models.Student>
+@{
+    ViewData["Title"] = "Records of Students";
+}
+@if(@Model == null)
+{
+    <h1>Loading page... Please wait</h1>
+}
+<h1>Students</h1>
+
+<div style="display: flex; justify-content: space-between">
+  <a style="text-decoration:none" asp-action="Create">
+    <button asp-action="Create" class="button-add">
+        <span class="button-add-image-container">
+            <img class="button-add-image" src="/img/plus-square.svg" />
+        </span>
+        <span style="text-decoration:none">Create New</span>
+    </button>
+  </a>
+  <form asp-action="Index" method="get">
+    <div class="div-search" style="width:450px">
+        <input placeholder="Find by Name or Career" class="input-search" name="SearchString" value="@ViewData["CurrentFilter"]" autocomplete="off" />
+        <input type="submit" value="Search" class="btn" /> 
+        <div>
+            <a style="text-decoration:none;color:black" asp-action="Index">| Back to List</a>
+        </div>
+    </div>
+   </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Career
+            </th>
+            <th>
+                Year
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Year
+            </th>
+            <th>
+                Housed
+            </th>
+            <th>
+                Registered
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Result) {
+        <tr class="tr-items">
+            <td class="tr-items">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Career)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                <span class="email">@Html.DisplayFor(modelItem => item.Email)</span> 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+               <span>@Html.DisplayFor(modelItem => item.Housed)</span> 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Registered)
+            </td>
+            <td class = "th-buttons">
+                <a style="text-decoration:none" asp-action="Details" asp-route-id="@item.Id">
+                    <button asp-action="Details" class="button-detail">
+                        <span class="button-add-image-container">
+                            <img class="button-add-image" src="/img/file.svg" />
+                        </span>
+                    </button>
+                </a>
+                <a style="text-decoration:none" asp-action="Edit" asp-route-id="@item.Id">
+                    <button asp-action="Edit" class="button-edit">
+                        <span class="button-add-image-container">
+                            <img class="button-add-image" src="/img/editing.svg" />
+                        </span>
+                    </button>
+                </a> 
+                <a style="text-decoration:none" asp-action="Delete" asp-route-id="@item.Id">
+                    <button asp-action="Delete" class="button-delete">
+                        <span class="button-add-image-container">
+                            <img class="button-add-image" src="/img/delete.svg" />
+                        </span>
+                    </button>
+                </a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+@if (Model.Result.Count() > 0)
+{
+    <span>
+        <strong>@Model.TotalRecords</strong> Students were found
+    </span>
+    <span>&nbsp;|&nbsp;</span>
+    <span>
+        Page <strong>@(Model.PageNow)</strong> of 
+        <strong>@Model.TotalPages</strong>
+    </span>
+    <span>&nbsp;|&nbsp;</span>
+}
+else
+{
+    <span>There's nothing to show</span>
+    <span>&nbsp;|&nbsp;</span>
+}
+
+@if (Model.PageNow > 1)
+{
+    @Html.ActionLink("<<", "Index", new { page = 1 },
+                    new { @class = "btn btn-sm btn-default" })
+    <span></span>
+    @Html.ActionLink("Back", "Index", new { page = Model.PageNow - 1 },
+                    new { @class = "btn btn-sm btn-default" })
+}
+else
+{
+    @Html.ActionLink("<<", "Index", new { page = 1 },
+                    new { @class = "btn btn-sm btn-default disabled" })
+    <span></span>
+    @Html.ActionLink("Back", "Index", new { page = 1 },
+                    new { @class = "btn btn-sm btn-default disabled" })
+}
+<span></span>
+@if (Model.PageNow < Model.TotalPages)
+{
+    @Html.ActionLink("Next", "Index", new { page = Model.PageNow + 1 },
+                    new { @class = "btn btn-sm btn-default" })
+    <span></span>
+    @Html.ActionLink(">>", "Index", new { page = Model.TotalPages },
+                    new { @class = "btn btn-sm btn-default" })
+}
+else
+{
+    @Html.ActionLink("Next", "Index", new { page = Model.TotalPages - 1 },
+                    new { @class = "btn btn-sm btn-default disabled" })
+    <span></span>
+    @Html.ActionLink(">>", "Index", new { page = Model.TotalPages },
+                    new { @class = "btn btn-sm btn-default disabled" })
+}
